@@ -1,0 +1,75 @@
+# docker/docker-compose-custom.yml
+# Mục tiêu: Kế thừa toàn bộ cấu hình từ docker-compose.yml gốc (cùng thư mục).
+# Chưa override gì. Khi cần tuỳ chỉnh, thêm các field ngay dưới từng service.
+
+name: supabase
+
+services:
+  studio:
+    extends:
+      file: ./docker-compose.yml
+      service: studio
+
+  kong:
+    extends:
+      file: ./docker-compose.yml
+      service: kong
+
+  auth:
+    extends:
+      file: ./docker-compose.yml
+      service: auth
+
+  rest:
+    extends:
+      file: ./docker-compose.yml
+      service: rest
+
+  realtime:
+    extends:
+      file: ./docker-compose.yml
+      service: realtime
+
+  storage:
+    extends:
+      file: ./docker-compose.yml
+      service: storage
+
+  imgproxy:
+    extends:
+      file: ./docker-compose.yml
+      service: imgproxy
+
+  meta:
+    extends:
+      file: ./docker-compose.yml
+      service: meta
+
+  functions:
+    extends:
+      file: ./docker-compose.yml
+      service: functions
+
+  analytics:
+    extends:
+      file: ./docker-compose.yml
+      service: analytics
+
+  db:
+    extends:
+      file: ./docker-compose.yml
+      service: db
+
+  vector:
+    extends:
+      file: ./docker-compose.yml
+      service: vector
+
+  supavisor:
+    extends:
+      file: ./docker-compose.yml
+      service: supavisor
+
+volumes:
+  # Khai báo lại named volume dùng trong services (nếu file gốc có)
+  db-config:
